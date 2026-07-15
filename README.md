@@ -21,6 +21,7 @@ python3 -m http.server 8080
 
 Then visit `http://localhost:8080`.
 
+https://forme-workout.naveenchanderb44.chatgpt.site/https://forme-workout.naveenchanderb44.chatgpt.site/
 ## Deploy
 
 This is a static website and can be deployed with GitHub Pages, Netlify, Vercel, or any static web host.
