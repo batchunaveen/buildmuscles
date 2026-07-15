@@ -11,12 +11,14 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="features.css" />
+  <link rel="stylesheet" href="plans.css" />
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="#home" aria-label="FORME home"><span>F</span> FORME</a>
     <nav aria-label="Primary navigation">
       <button class="nav-link active" data-view="home">Explore</button>
+      <button class="nav-link" data-view="plans">Workouts</button>
       <button class="nav-link" data-view="workout">My workout</button>
       <button class="nav-link" data-view="history">History</button>
       <button class="nav-link" data-view="nutrition">Nutrition</button>
@@ -92,6 +94,7 @@
         <h2 id="exerciseHeading">Exercises for you</h2>
         <p id="matchSummary"></p>
       </div>
+      <div class="taxonomy"><h3>Explore by Muscle Group</h3><div class="taxonomy-list" id="muscleTaxonomy"></div><h3>Explore by Equipment</h3><div class="taxonomy-list" id="equipmentTaxonomy"></div></div>
       <div class="filters" id="muscleFilters"></div>
       <div class="library-tools">
         <label class="search-box"><span>⌕</span><input id="exerciseSearch" type="search" placeholder="Search exercises, muscles, or equipment" /></label>
@@ -105,6 +108,12 @@
       <div id="workoutList" class="workout-list"></div>
       <div id="workoutEmpty" class="empty-state"><span>＋</span><h3>Your workout is empty</h3><p>Explore exercises and add movements to start your session.</p><button class="primary" data-go="home">Explore exercises</button></div>
       <div class="save-session-bar" id="saveSessionBar"><textarea id="sessionNotes" placeholder="How did today's workout feel? (optional)"></textarea><button class="primary" id="saveWorkout">Finish & save workout <span>✓</span></button></div>
+    </section>
+
+    <section id="plans" class="view">
+      <div class="plans-hero"><p class="eyebrow">FORME TRAINING PLANS</p><h2>Workouts built for<br><em>your next step.</em></h2><p>Choose a goal, training level, or body area. Open any plan to see the complete workout and description.</p></div>
+      <div class="plan-toolbar"><div class="filters" id="planFilters"></div><label class="search-box"><span>⌕</span><input id="planSearch" type="search" placeholder="Search workouts" /></label></div>
+      <div class="plan-grid" id="planGrid"></div>
     </section>
 
     <section id="history" class="view">
@@ -121,6 +130,7 @@
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="planDialog" class="plan-dialog"><button class="dialog-close" id="closePlan" aria-label="Close workout">✕</button><div id="planDetail"></div></dialog>
   <script src="app.js"></script>
 </body>
 </html>
