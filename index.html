@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0d0c" />
+  <meta name="description" content="FORME — equipment-aware workout planner and muscle explorer." />
+  <title>FORME — Build strength your way</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="FORME home"><span>F</span> FORME</a>
+    <nav aria-label="Primary navigation">
+      <button class="nav-link active" data-view="home">Explore</button>
+      <button class="nav-link" data-view="workout">My workout</button>
+      <button class="nav-link" data-view="nutrition">Nutrition</button>
+    </nav>
+    <button class="profile" aria-label="Open profile">NB</button>
+  </header>
+
+  <main>
+    <section id="home" class="view active-view">
+      <div class="hero-copy">
+        <p class="eyebrow">TRAIN SMARTER · MOVE BETTER</p>
+        <h1>Your body.<br><em>Your equipment.</em><br>Your plan.</h1>
+        <p class="lede">Choose what you have, select a muscle, and get a workout built for you.</p>
+        <div class="hero-actions">
+          <button class="primary" id="startPlan">Build my workout <span>→</span></button>
+          <button class="ghost" id="quickBodyweight">No equipment workout</button>
+        </div>
+        <div class="stat-row">
+          <div><strong>24</strong><span>Exercises</span></div>
+          <div><strong>8</strong><span>Equipment types</span></div>
+          <div><strong>10</strong><span>Muscle groups</span></div>
+        </div>
+      </div>
+
+      <div class="body-stage" aria-label="Interactive muscle selector">
+        <div class="stage-head">
+          <span>SELECT A MUSCLE</span>
+          <button id="flipBody" class="tiny-btn">↻ Front / back</button>
+        </div>
+        <div class="body-wrap front" id="bodyWrap">
+          <svg class="body-svg" viewBox="0 0 300 610" role="img" aria-label="Human body muscle map">
+            <defs>
+              <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8d1c5"/><stop offset="1" stop-color="#88857f"/></linearGradient>
+            </defs>
+            <circle cx="150" cy="48" r="35" fill="url(#skin)"/>
+            <path d="M126 82 Q150 96 174 82 L192 121 180 278 120 278 108 121Z" fill="url(#skin)"/>
+            <path d="M110 112 Q77 126 63 195 L80 209 118 153Z" fill="url(#skin)"/>
+            <path d="M190 112 Q223 126 237 195 L220 209 182 153Z" fill="url(#skin)"/>
+            <path d="M65 190 L45 318 66 322 84 202Z" fill="url(#skin)"/>
+            <path d="M235 190 L255 318 234 322 216 202Z" fill="url(#skin)"/>
+            <path d="M121 270 L105 432 133 438 151 283Z" fill="url(#skin)"/>
+            <path d="M179 270 L195 432 167 438 149 283Z" fill="url(#skin)"/>
+            <path d="M106 425 L100 575 127 575 134 434Z" fill="url(#skin)"/>
+            <path d="M194 425 L200 575 173 575 166 434Z" fill="url(#skin)"/>
+            <g class="muscle front-muscle" data-muscle="Chest"><path d="M121 124 Q150 105 150 154 Q127 165 115 148Z"/><path d="M179 124 Q150 105 150 154 Q173 165 185 148Z"/></g>
+            <g class="muscle front-muscle" data-muscle="Shoulders"><ellipse cx="111" cy="125" rx="18" ry="21"/><ellipse cx="189" cy="125" rx="18" ry="21"/></g>
+            <g class="muscle front-muscle" data-muscle="Arms"><path d="M91 145 Q76 164 75 199 L91 202 109 153Z"/><path d="M209 145 Q224 164 225 199 L209 202 191 153Z"/></g>
+            <g class="muscle front-muscle" data-muscle="Core"><path d="M131 162 L150 158 169 162 165 245 135 245Z"/></g>
+            <g class="muscle front-muscle" data-muscle="Quads"><path d="M122 281 L109 400 134 407 149 289Z"/><path d="M178 281 L191 400 166 407 151 289Z"/></g>
+            <g class="muscle back-muscle" data-muscle="Back"><path d="M119 117 Q150 137 181 117 L174 218 150 242 126 218Z"/></g>
+            <g class="muscle back-muscle" data-muscle="Glutes"><path d="M121 239 Q150 226 150 279 Q125 291 112 269Z"/><path d="M179 239 Q150 226 150 279 Q175 291 188 269Z"/></g>
+            <g class="muscle back-muscle" data-muscle="Hamstrings"><path d="M120 290 L108 403 134 411 148 292Z"/><path d="M180 290 L192 403 166 411 152 292Z"/></g>
+            <g class="muscle back-muscle" data-muscle="Calves"><path d="M108 436 L103 541 126 541 133 437Z"/><path d="M192 436 L197 541 174 541 167 437Z"/></g>
+          </svg>
+          <div class="body-tip" id="bodyTip">Tap a highlighted muscle</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="planner" class="view">
+      <div class="section-title"><p class="eyebrow">STEP 1 OF 2</p><h2>What equipment do you have?</h2><p>Select all that apply. Your exercises update instantly.</p></div>
+      <div class="equipment-grid" id="equipmentGrid"></div>
+      <div class="planner-footer">
+        <div><span id="equipmentCount">1</span> equipment type selected</div>
+        <button class="primary" id="showExercises">Find exercises <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="exercises" class="view">
+      <div class="section-title compact">
+        <button class="back-btn" id="backToEquipment">← Equipment</button>
+        <p class="eyebrow">YOUR MATCHES</p>
+        <h2 id="exerciseHeading">Exercises for you</h2>
+        <p id="matchSummary"></p>
+      </div>
+      <div class="filters" id="muscleFilters"></div>
+      <div class="exercise-grid" id="exerciseGrid"></div>
+    </section>
+
+    <section id="workout" class="view">
+      <div class="section-title"><p class="eyebrow">TODAY'S SESSION</p><h2>My workout</h2><p>Exercises you add appear here.</p></div>
+      <div id="workoutList" class="workout-list"></div>
+      <div id="workoutEmpty" class="empty-state"><span>＋</span><h3>Your workout is empty</h3><p>Explore exercises and add movements to start your session.</p><button class="primary" data-go="home">Explore exercises</button></div>
+    </section>
+
+    <section id="nutrition" class="view">
+      <div class="section-title"><p class="eyebrow">FUEL YOUR PROGRESS</p><h2>Simple performance nutrition</h2><p>Balanced sample meals to support training and recovery.</p></div>
+      <div class="nutrition-grid" id="nutritionGrid"></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
