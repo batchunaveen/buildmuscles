@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="features.css" />
 </head>
 <body>
   <header class="topbar">
@@ -17,6 +18,7 @@
     <nav aria-label="Primary navigation">
       <button class="nav-link active" data-view="home">Explore</button>
       <button class="nav-link" data-view="workout">My workout</button>
+      <button class="nav-link" data-view="history">History</button>
       <button class="nav-link" data-view="nutrition">Nutrition</button>
     </nav>
     <button class="profile" aria-label="Open profile">NB</button>
@@ -91,13 +93,25 @@
         <p id="matchSummary"></p>
       </div>
       <div class="filters" id="muscleFilters"></div>
+      <div class="library-tools">
+        <label class="search-box"><span>⌕</span><input id="exerciseSearch" type="search" placeholder="Search exercises, muscles, or equipment" /></label>
+        <select id="difficultyFilter" aria-label="Filter by difficulty"><option value="All">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+      </div>
       <div class="exercise-grid" id="exerciseGrid"></div>
     </section>
 
     <section id="workout" class="view">
-      <div class="section-title"><p class="eyebrow">TODAY'S SESSION</p><h2>My workout</h2><p>Exercises you add appear here.</p></div>
+      <div class="section-title workout-heading"><div><p class="eyebrow">TODAY'S SESSION</p><h2>My workout</h2><p id="todayLabel">Log every set, then save your session.</p></div><div class="session-summary"><strong id="sessionSetCount">0</strong><span>sets</span><strong id="sessionVolume">0</strong><span>lb volume</span></div></div>
       <div id="workoutList" class="workout-list"></div>
       <div id="workoutEmpty" class="empty-state"><span>＋</span><h3>Your workout is empty</h3><p>Explore exercises and add movements to start your session.</p><button class="primary" data-go="home">Explore exercises</button></div>
+      <div class="save-session-bar" id="saveSessionBar"><textarea id="sessionNotes" placeholder="How did today's workout feel? (optional)"></textarea><button class="primary" id="saveWorkout">Finish & save workout <span>✓</span></button></div>
+    </section>
+
+    <section id="history" class="view">
+      <div class="section-title"><p class="eyebrow">YOUR TRAINING JOURNEY</p><h2>Workout history</h2><p>Every finished session, organized by day.</p></div>
+      <div class="history-stats" id="historyStats"></div>
+      <div class="history-list" id="historyList"></div>
+      <div class="empty-state" id="historyEmpty"><span>◷</span><h3>No saved workouts yet</h3><p>Complete today’s workout and it will appear here.</p><button class="primary" data-go="workout">Go to my workout</button></div>
     </section>
 
     <section id="nutrition" class="view">
